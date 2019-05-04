@@ -1,0 +1,33 @@
+# IntelliJ
+.idea/**/*
+out/
+.idea_modules/
+**___jb_tmp___
+*.iml
+modules.xml
+*.ipr
+
+
+# Kotlin #
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Gradle #
+.gradle
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+**/build/
