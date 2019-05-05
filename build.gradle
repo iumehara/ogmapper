@@ -9,6 +9,10 @@ version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
+test {
+    useJUnit()
+}
+
 repositories {
     mavenCentral()
 }
@@ -17,9 +21,9 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'org.jsoup:jsoup:1.11.3'
 
-    testCompile 'org.junit.jupiter:junit-jupiter-api'
-    testCompile 'org.assertj:assertj-core:3.12.2'
-    testCompile 'org.mockito:mockito-junit-jupiter:2.23.4'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.27.0'
 }
 
 compileKotlin {

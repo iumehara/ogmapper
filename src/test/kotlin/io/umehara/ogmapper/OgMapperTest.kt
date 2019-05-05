@@ -8,8 +8,8 @@ import io.umehara.ogmapper.domain.OgType.*
 import io.umehara.ogmapper.service.HtmlFetcher
 import io.umehara.ogmapper.service.OgStringTagParser
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.Before
+import org.junit.Test
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.net.URL
@@ -19,7 +19,7 @@ class OgMapperTest {
     private lateinit var ogStringTagParser: OgStringTagParser
     private lateinit var ogMapper: OgMapper
 
-    @BeforeEach
+    @Before
     fun setUp() {
         val htmlFetcher = mock(HtmlFetcher::class.java)
         ogStringTagParser = mock(OgStringTagParser::class.java)

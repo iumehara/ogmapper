@@ -1,15 +1,15 @@
 package io.umehara.ogmapper.jsoup
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.Before
+import org.junit.Test
 import java.io.File
 import kotlin.text.Charsets.UTF_8
 
 class JsoupOgStringTagParserTest {
     private lateinit var jsoupOgTagParser: JsoupOgStringTagParser
 
-    @BeforeEach
+    @Before
     internal fun setUp() {
         jsoupOgTagParser = JsoupOgStringTagParser()
     }
