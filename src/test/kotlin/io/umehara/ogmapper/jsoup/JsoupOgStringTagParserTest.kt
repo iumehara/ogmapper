@@ -1,26 +1,25 @@
-package io.umehara.ogmapper.service
+package io.umehara.ogmapper.jsoup
 
 import org.assertj.core.api.Assertions.assertThat
-import org.jsoup.Jsoup
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.io.File
+import kotlin.text.Charsets.UTF_8
 
-class OgStringTagsParserTest {
-    private lateinit var ogTagParser: OgStringTagParser
+class JsoupOgStringTagParserTest {
+    private lateinit var jsoupOgTagParser: JsoupOgStringTagParser
 
     @BeforeEach
     internal fun setUp() {
-        ogTagParser = OgStringTagParser()
+        jsoupOgTagParser = JsoupOgStringTagParser()
     }
 
     @Test
     fun parse_empty() {
-        val file = File("src/test/resources/html/empty.html")
-        val content = Jsoup.parse(file, "UTF-8", "baseUri")
+        val html = File("src/test/resources/html/empty.html").readText(UTF_8)
 
 
-        val ogTags = ogTagParser.parse(content)
+        val ogTags = jsoupOgTagParser.parse(html)
 
 
         assertThat(ogTags).isNull()
@@ -28,11 +27,10 @@ class OgStringTagsParserTest {
 
     @Test
     fun parse_complete() {
-        val file = File("src/test/resources/html/complete.html")
-        val content = Jsoup.parse(file, "UTF-8", "baseUri")
+        val html = File("src/test/resources/html/complete.html").readText(UTF_8)
 
 
-        val ogTags = ogTagParser.parse(content)
+        val ogTags = jsoupOgTagParser.parse(html)
 
 
         assertThat(ogTags?.title).isEqualTo("The Title")
@@ -49,11 +47,10 @@ class OgStringTagsParserTest {
 
     @Test
     fun parse_imdb() {
-        val file = File("src/test/resources/html/imdb_the_rock.html")
-        val content = Jsoup.parse(file, "UTF-8", "baseUri")
+        val html = File("src/test/resources/html/imdb_the_rock.html").readText(UTF_8)
 
 
-        val ogTags = ogTagParser.parse(content)
+        val ogTags = jsoupOgTagParser.parse(html)
 
 
         assertThat(ogTags?.title).isEqualTo("The Rock (1996) - IMDb")
@@ -70,11 +67,10 @@ class OgStringTagsParserTest {
 
     @Test
     fun parse_trySwift() {
-        val file = File("src/test/resources/html/trySwift.html")
-        val content = Jsoup.parse(file, "UTF-8", "baseUri")
+        val html = File("src/test/resources/html/trySwift.html").readText(UTF_8)
 
 
-        val ogTags = ogTagParser.parse(content)
+        val ogTags = jsoupOgTagParser.parse(html)
 
 
         assertThat(ogTags?.title).isEqualTo("try! Swift Conference")

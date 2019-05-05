@@ -16,6 +16,7 @@ repositories {
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'org.jsoup:jsoup:1.11.3'
+
     testCompile 'org.junit.jupiter:junit-jupiter-api'
     testCompile 'org.assertj:assertj-core:3.12.2'
     testCompile 'org.mockito:mockito-junit-jupiter:2.23.4'

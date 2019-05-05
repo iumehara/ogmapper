@@ -2,13 +2,12 @@ package io.umehara.ogmapper
 
 import io.umehara.ogmapper.domain.OgDeterminer
 import io.umehara.ogmapper.domain.OgDeterminer.*
+import io.umehara.ogmapper.domain.OgStringTags
 import io.umehara.ogmapper.domain.OgType
 import io.umehara.ogmapper.domain.OgType.*
-import io.umehara.ogmapper.domain.OgStringTags
 import io.umehara.ogmapper.service.HtmlFetcher
 import io.umehara.ogmapper.service.OgStringTagParser
 import org.assertj.core.api.Assertions.assertThat
-import org.jsoup.Jsoup
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
@@ -16,7 +15,7 @@ import org.mockito.Mockito.mock
 import java.net.URL
 
 class OgMapperTest {
-    private val stubHtml = Jsoup.parse("<html></html>")
+    private val stubHtml = "<html></html>"
     private lateinit var ogStringTagParser: OgStringTagParser
     private lateinit var ogMapper: OgMapper
 
@@ -25,7 +24,7 @@ class OgMapperTest {
         val htmlFetcher = mock(HtmlFetcher::class.java)
         ogStringTagParser = mock(OgStringTagParser::class.java)
         ogMapper = OgMapper(htmlFetcher, ogStringTagParser)
-        `when`(htmlFetcher.fetch(URL("http://www.example.com"))).thenReturn(stubHtml)
+        `when`(htmlFetcher.fetchHead(URL("http://www.example.com"))).thenReturn(stubHtml)
     }
 
     @Test

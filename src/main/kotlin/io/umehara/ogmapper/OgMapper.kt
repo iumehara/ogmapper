@@ -3,17 +3,18 @@ package io.umehara.ogmapper
 import io.umehara.ogmapper.domain.OgDeterminer
 import io.umehara.ogmapper.domain.OgDeterminer.BLANK
 import io.umehara.ogmapper.domain.OgDeterminer.valueOf
-import io.umehara.ogmapper.domain.OgType
 import io.umehara.ogmapper.domain.OgTags
+import io.umehara.ogmapper.domain.OgType
 import io.umehara.ogmapper.service.HtmlFetcher
 import io.umehara.ogmapper.service.OgStringTagParser
 import java.net.MalformedURLException
 import java.net.URL
 
 
-class OgMapper(private val htmlFetcher: HtmlFetcher, private val ogStringTagParser: OgStringTagParser) {
+class OgMapper(private val htmlFetcher: HtmlFetcher,
+               private val ogStringTagParser: OgStringTagParser) {
     fun process(urlToProcess: URL): OgTags? {
-        val document = htmlFetcher.fetch(urlToProcess) ?: return null
+        val document = htmlFetcher.fetchHead(urlToProcess) ?: return null
         val ogStringTags = ogStringTagParser.parse(document) ?: return null
 
         val title = ogStringTags.title ?: urlToProcess.host
