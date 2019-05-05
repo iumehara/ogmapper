@@ -56,12 +56,17 @@ class OgMapper(private val htmlFetcher: HtmlFetcher,
         }
     }
 
+    private fun simplifyTag(maybeComplexTag: String): String {
+        val tag = maybeComplexTag.toUpperCase()
+        return tag.split(".").first()
+    }
+
     private fun formatType(maybeType: String?): OgType {
         if (maybeType == null) return OgType.WEBSITE
 
         var type = OgType.WEBSITE
         try {
-            type = OgType.valueOf(maybeType.toUpperCase())
+            type = OgType.valueOf(simplifyTag(maybeType))
         } catch (e: IllegalArgumentException) {}
 
         return type
@@ -72,7 +77,7 @@ class OgMapper(private val htmlFetcher: HtmlFetcher,
 
         var determiner = BLANK
         try {
-            determiner = valueOf(maybeDeterminer.toUpperCase())
+            determiner = valueOf(simplifyTag(maybeDeterminer))
         } catch (e: IllegalArgumentException) {}
 
         return determiner

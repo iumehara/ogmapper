@@ -129,6 +129,7 @@ class OgMapperTest {
         assertTypeEnum(OgStringTags(type="MUSIC"), MUSIC)
         assertTypeEnum(OgStringTags(type="PROFILE"), PROFILE)
         assertTypeEnum(OgStringTags(type="VIDEO"), VIDEO)
+        assertTypeEnum(OgStringTags(type="video.movie"), VIDEO)
         assertTypeEnum(OgStringTags(type="WEBSITE"), WEBSITE)
 
         assertTypeEnum(OgStringTags(), WEBSITE)
