@@ -26,6 +26,7 @@ modules.xml
 
 # Gradle #
 .gradle
+gradle.properties-local
 build/
 gradle-app.setting
 !gradle-wrapper.jar
