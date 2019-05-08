@@ -31,6 +31,34 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name 'ogmapper'
+                    description 'Open Graph Html Tag Parser'
+                    url 'https://github.com/iumehara/ogmapper'
+                    scm {
+                        connection 'scm:git:git://github.com/iumehara/ogmapper.git'
+                        developerConnection 'scm:git:ssh://github.com:iumehara/ogmapper.git'
+                        url 'https://github.com/iumehara/ogmapper/tree/master'
+                    }
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'http://www.opensource.org/licenses/mit-license.php'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'iumehara'
+                            name 'Ichizo Umehara'
+                            email 'ichizo@umehara.io'
+                            organization 'iumehara'gi
+                            organizationUrl 'http://umehara.io'
+                        }
+                    }
+                }
+            }
         }
     }
     repositories {
