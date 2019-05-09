@@ -10,7 +10,15 @@ import io.umehara.ogmapper.service.OgStringTagParser
 import java.net.MalformedURLException
 import java.net.URL
 
-
+/**
+ * The main class for parsing og tags from websites.
+ * Call the process method with a url argument, and receive
+ * back an OgTags object with og tag values.
+ *
+ * See the [Open Graph Protocol spec](http://ogp.me/)
+ *
+ * @author Ichizo Umehara
+ */
 class OgMapper(private val htmlFetcher: HtmlFetcher,
                private val ogStringTagParser: OgStringTagParser) {
     fun process(urlToProcess: URL): OgTags? {
