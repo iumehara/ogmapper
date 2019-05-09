@@ -39,6 +39,10 @@ dokka {
     outputDirectory = 'build/javadoc'
 }
 
+signing {
+    sign publishing.publications
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -75,7 +79,7 @@ publishing {
     }
     repositories {
         maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
+            url ossrhUrl
             credentials {
                 username = ossrhUsername
                 password = ossrhPassword
