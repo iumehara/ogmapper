@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'io.umehara'
-version '1.4-SNAPSHOT'
+version releaseVersion
 
 sourceCompatibility = 1.8
 
@@ -69,7 +69,7 @@ publishing {
                             id 'iumehara'
                             name 'Ichizo Umehara'
                             email 'ichizo@umehara.io'
-                            organization 'iumehara'gi
+                            organization 'iumehara'
                             organizationUrl 'http://umehara.io'
                         }
                     }
