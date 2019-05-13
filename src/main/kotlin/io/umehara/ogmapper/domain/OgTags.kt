@@ -14,11 +14,11 @@ data class OgTags(
     val title: String,
     val type: OgType,
     val url: URL,
-    val image: URL?,
-    val audio: URL?,
-    val description: String?,
-    val determiner: OgDeterminer?,
-    val locale: String?,
-    val siteName: String?,
-    val video: URL?
+    val image: URL? = null,
+    val audio: URL? = null,
+    val description: String? = null,
+    val determiner: OgDeterminer? = null,
+    val locale: String? = null,
+    val siteName: String? = null,
+    val video: URL? = null
 )
