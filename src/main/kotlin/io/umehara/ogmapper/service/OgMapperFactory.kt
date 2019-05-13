@@ -1,7 +1,7 @@
 package io.umehara.ogmapper.service
 
-import io.umehara.ogmapper.OgMapper
+import io.umehara.ogmapper.DefaultOgMapper
 
 interface OgMapperFactory {
-    fun build(): OgMapper
+    fun build(): DefaultOgMapper
 }

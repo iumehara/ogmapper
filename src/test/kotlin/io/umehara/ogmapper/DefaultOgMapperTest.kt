@@ -14,16 +14,16 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 import java.net.URL
 
-class OgMapperTest {
+class DefaultOgMapperTest {
     private val stubHtml = "<html></html>"
     private lateinit var ogStringTagParser: OgStringTagParser
-    private lateinit var ogMapper: OgMapper
+    private lateinit var defaultOgMapper: DefaultOgMapper
 
     @Before
     fun setUp() {
         val htmlFetcher = mock(HtmlFetcher::class.java)
         ogStringTagParser = mock(OgStringTagParser::class.java)
-        ogMapper = OgMapper(htmlFetcher, ogStringTagParser)
+        defaultOgMapper = DefaultOgMapper(htmlFetcher, ogStringTagParser)
         `when`(htmlFetcher.fetchHead(URL("http://www.example.com"))).thenReturn(stubHtml)
     }
 
@@ -44,7 +44,7 @@ class OgMapperTest {
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTagsWithValidValues)
 
 
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
 
 
         assertThat(ogTags?.title).isEqualTo("hello")
@@ -66,7 +66,7 @@ class OgMapperTest {
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTagsWithNullValues)
 
 
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
 
 
         assertThat(ogTags?.title).isEqualTo("www.example.com")
@@ -88,7 +88,7 @@ class OgMapperTest {
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTagsWithEmptyValues)
 
 
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
 
 
         assertThat(ogTags?.title).isEqualTo("")
@@ -114,7 +114,7 @@ class OgMapperTest {
         )
 
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTags)
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
 
         assertThat(ogTags?.url).isEqualTo(URL("http://www.example.com/"))
         assertThat(ogTags?.image).isEqualTo(URL("http://www.example.com/image.jpg"))
@@ -139,7 +139,7 @@ class OgMapperTest {
 
     private fun assertTypeEnum(ogStringTags: OgStringTags, expectedType: OgType) {
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTags)
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
         assertThat(ogTags?.type).isEqualTo(expectedType)
     }
 
@@ -158,7 +158,7 @@ class OgMapperTest {
 
     private fun assertDeterminerEnum(ogStringTags: OgStringTags, expectedType: OgDeterminer) {
         `when`(ogStringTagParser.parse(stubHtml)).thenReturn(ogStringTags)
-        val ogTags = ogMapper.process(URL("http://www.example.com"))
+        val ogTags = defaultOgMapper.process(URL("http://www.example.com"))
         assertThat(ogTags?.determiner).isEqualTo(expectedType)
     }
 }
