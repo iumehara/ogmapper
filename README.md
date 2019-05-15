@@ -21,6 +21,26 @@ data class OgTags(
 )
 ```
 
+# Getting Started
+
+Install from Maven Central
+
+### Gradle 
+Include the below in your `build.gradle`'s `dependencies` block.
+```
+implementation 'io.umehara:ogmapper:1.0.0'
+```
+
+### Maven
+Include the dependency below in the  `pom.xml`'s `<dependencies>` section.
+```xml
+<dependency>
+  <groupId>io.umehara</groupId>
+  <artifactId>ogmapper</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
 # Example
 use the `JsoupOgMapperFactory` for the default implementation.
 
